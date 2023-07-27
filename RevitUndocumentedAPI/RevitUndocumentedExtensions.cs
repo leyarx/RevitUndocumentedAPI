@@ -71,5 +71,23 @@ namespace RevitUndocumentedAPI
 			aRibbonPanel.Source.Items.Add(ribbonRowPanel);
 			return list;
 		}
+
+		public static void SetWidth(this ComboBox comboBox, double width)
+        {
+			FieldInfo m_RibbonItemField = 
+				typeof(RibbonItem).GetField("m_RibbonItem", BindingFlags.NonPublic | BindingFlags.Instance);
+
+			UIFramework.RvtRibbonCombo rvtRibbonCombo = 
+				m_RibbonItemField.GetValue(comboBox) as UIFramework.RvtRibbonCombo;
+
+			if(rvtRibbonCombo.MinWidth > width)
+            {
+				rvtRibbonCombo.MinWidth = width;
+			}
+
+			rvtRibbonCombo.Width = width;
+		}
 	}
+
+
 }
