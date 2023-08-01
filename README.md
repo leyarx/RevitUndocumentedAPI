@@ -15,3 +15,6 @@ Create a Dialog Box Launchers button on the Revit Ribbon Panel.
 ![Revit Ribbon Dialog Box Launchers](./Images/RibbonSettingsCommand.png?raw=true)
 
 Inspired by [Ribbon Panel Caption Button](https://forums.autodesk.com/t5/revit-api-forum/ribbon-panel-caption-button/m-p/9354199#M45054)
+
+## SimulateCommandOnBarCommand
+Imitate method from UIFrameworkServices.DialogBarService.simulateCommandOnBar()
