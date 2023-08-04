@@ -18,3 +18,6 @@ Inspired by [Ribbon Panel Caption Button](https://forums.autodesk.com/t5/revit-a
 
 ## SimulateCommandOnBarCommand
 Imitate method from UIFrameworkServices.DialogBarService.simulateCommandOnBar()
+
+## OptionBarTitleCommand
+Some experiments with DynamicLabelDialogBar to set a get title value
