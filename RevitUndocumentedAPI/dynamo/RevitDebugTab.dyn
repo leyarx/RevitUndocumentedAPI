@@ -1,0 +1,77 @@
+{
+  "Uuid": "69f242b2-49b7-470d-bff2-9f29aa9b5570",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "RevitDebugTab",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('UIFramework')\r\n\r\nfrom UIFramework import RevitRibbonControl\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n\r\n# Place your code below this line\r\n\r\nribbonControl = RevitRibbonControl.RibbonControl\r\n\r\nif not ribbonControl.Tabs.Contains(ribbonControl.DebugTab):\r\n\tribbonControl.Tabs.Add(ribbonControl.DebugTab)\r\n\r\n# Assign your output to the OUT variable.\r\n#OUT = 0",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "4c0eec750dda40e4bf8195e38141424b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c701a7573d22418abfe0b779b4dfe15d",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    }
+  ],
+  "Connectors": [],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.10.1.3976",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "DebugTab",
+        "Id": "4c0eec750dda40e4bf8195e38141424b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 223.20306380419333,
+        "Y": 232.06138872243503
+      }
+    ],
+    "Annotations": [],
+    "X": -161.42071956411002,
+    "Y": -337.3192404336678,
+    "Zoom": 2.3047722397507266
+  }
+}

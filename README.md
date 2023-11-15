@@ -21,3 +21,8 @@ Imitate method from UIFrameworkServices.DialogBarService.simulateCommandOnBar()
 
 ## OptionBarTitleCommand
 Some experiments with DynamicLabelDialogBar to set a get title value
+
+## RibbonDebugTab
+Activate Revit In-House Debug Tab
+
+![Revit Ribbon In-House Debug Tab](./Images/RibbonDebugTab.png?raw=true)
