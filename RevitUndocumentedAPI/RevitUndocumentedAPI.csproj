@@ -56,6 +56,9 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="EssentialsDBAPI">
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2022\EssentialsDBAPI.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RevitAPI, Version=22.0.0.0, Culture=neutral, processorArchitecture=AMD64">
@@ -87,11 +90,17 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UIFrameworkServices">
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2022\UIFrameworkServices.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command.cs" />
+    <Compile Include="DebugTab.cs" />
+    <Compile Include="InvestigateGNode.cs" />
     <Compile Include="OptionBarTitleCommand.cs" />
+    <Compile Include="PostCommand.cs" />
     <Compile Include="RibbonSettingsCommand.cs" />
     <Compile Include="Ribbon.cs" />
     <Compile Include="RibbonLabelCommand.cs" />
