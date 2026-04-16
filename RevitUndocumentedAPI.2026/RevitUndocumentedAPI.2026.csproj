@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net8.0-windows</TargetFramework>
+	  <RootNamespace>RevitUndocumentedAPI</RootNamespace>
+	  <UseWPF>true</UseWPF>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>enable</Nullable>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	  <DefineConstants>REVIT2026</DefineConstants>
+  </PropertyGroup>
+
+  <Import Project="..\RevitUndocumentedAPI\RevitUndocumentedAPI.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <PackageReference Include="Nice3point.Revit.Api.UIFrameworkServices" Version="2026.4.0" />
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2026.0.0" />
+  </ItemGroup>
+
+</Project>

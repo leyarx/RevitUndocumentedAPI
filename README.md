@@ -26,3 +26,8 @@ Some experiments with DynamicLabelDialogBar to set a get title value
 Activate Revit In-House Debug Tab
 
 ![Revit Ribbon In-House Debug Tab](./Images/RibbonDebugTab.png?raw=true)
+
+## BackgroundProcessesCommand
+Add Item to Background Processes Panel
+
+![Revit Background Processes Panel](./Images/BackgroundProcessesCommand.png?raw=true)

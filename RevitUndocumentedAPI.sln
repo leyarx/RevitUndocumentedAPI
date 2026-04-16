@@ -1,9 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33027.164
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitUndocumentedAPI", "RevitUndocumentedAPI\RevitUndocumentedAPI.csproj", "{393E4732-5086-4B69-B6AD-5561BF2042D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitUndocumentedAPI.2025", "RevitUndocumentedAPI.2025\RevitUndocumentedAPI.2025.csproj", "{AD2EC3A7-DCDD-47D9-B399-AC584AF00C81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitUndocumentedAPI.2022", "RevitUndocumentedAPI.2022\RevitUndocumentedAPI.2022.csproj", "{393E4732-5086-4B69-B6AD-5561BF2042D6}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "RevitUndocumentedAPI", "RevitUndocumentedAPI\RevitUndocumentedAPI.shproj", "{1A731F50-1650-481F-AFA8-2CF00EA69634}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitUndocumentedAPI.2026", "RevitUndocumentedAPI.2026\RevitUndocumentedAPI.2026.csproj", "{A9B5582D-23B3-4A5D-8E26-C1DF9459C0C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +24,14 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD2EC3A7-DCDD-47D9-B399-AC584AF00C81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD2EC3A7-DCDD-47D9-B399-AC584AF00C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD2EC3A7-DCDD-47D9-B399-AC584AF00C81}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AD2EC3A7-DCDD-47D9-B399-AC584AF00C81}.Debug|x64.Build.0 = Debug|Any CPU
+		{AD2EC3A7-DCDD-47D9-B399-AC584AF00C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD2EC3A7-DCDD-47D9-B399-AC584AF00C81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD2EC3A7-DCDD-47D9-B399-AC584AF00C81}.Release|x64.ActiveCfg = Release|Any CPU
+		{AD2EC3A7-DCDD-47D9-B399-AC584AF00C81}.Release|x64.Build.0 = Release|Any CPU
 		{393E4732-5086-4B69-B6AD-5561BF2042D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{393E4732-5086-4B69-B6AD-5561BF2042D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{393E4732-5086-4B69-B6AD-5561BF2042D6}.Debug|x64.ActiveCfg = Debug|x64
@@ -21,11 +40,25 @@ Global
 		{393E4732-5086-4B69-B6AD-5561BF2042D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{393E4732-5086-4B69-B6AD-5561BF2042D6}.Release|x64.ActiveCfg = Release|x64
 		{393E4732-5086-4B69-B6AD-5561BF2042D6}.Release|x64.Build.0 = Release|x64
+		{A9B5582D-23B3-4A5D-8E26-C1DF9459C0C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9B5582D-23B3-4A5D-8E26-C1DF9459C0C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9B5582D-23B3-4A5D-8E26-C1DF9459C0C9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A9B5582D-23B3-4A5D-8E26-C1DF9459C0C9}.Debug|x64.Build.0 = Debug|Any CPU
+		{A9B5582D-23B3-4A5D-8E26-C1DF9459C0C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9B5582D-23B3-4A5D-8E26-C1DF9459C0C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9B5582D-23B3-4A5D-8E26-C1DF9459C0C9}.Release|x64.ActiveCfg = Release|Any CPU
+		{A9B5582D-23B3-4A5D-8E26-C1DF9459C0C9}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C69B7096-AA22-41F1-B3C8-2ECAC1E6B8CE}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		RevitUndocumentedAPI\RevitUndocumentedAPI.projitems*{1a731f50-1650-481f-afa8-2cf00ea69634}*SharedItemsImports = 13
+		RevitUndocumentedAPI\RevitUndocumentedAPI.projitems*{393e4732-5086-4b69-b6ad-5561bf2042d6}*SharedItemsImports = 4
+		RevitUndocumentedAPI\RevitUndocumentedAPI.projitems*{a9b5582d-23b3-4a5d-8e26-c1df9459c0c9}*SharedItemsImports = 5
+		RevitUndocumentedAPI\RevitUndocumentedAPI.projitems*{ad2ec3a7-dcdd-47d9-b399-ac584af00c81}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
