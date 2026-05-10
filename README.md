@@ -31,3 +31,9 @@ Activate Revit In-House Debug Tab
 Add Item to Background Processes Panel
 
 ![Revit Background Processes Panel](./Images/BackgroundProcessesCommand.png?raw=true)
+
+## SplitRegionOffsetCommand
+Move Splitted Crop Region
+Works only in Revit 2025 & 2026
+
+![Revit Split Region Offset](./Images/SplitRegionOffsetCommand.gif?raw=true)

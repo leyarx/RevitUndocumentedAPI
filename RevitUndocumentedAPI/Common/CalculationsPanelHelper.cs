@@ -66,7 +66,7 @@ namespace RevitUndocumentedAPI.Common
             }
 
             var app1 = propertyInfo.GetValue(mainWindow);
-            var app = propertyInfo.GetValue(mainWindow) as Application;
+            var app = propertyInfo.GetValue(mainWindow) as System.Windows.Application;
 
             if (app == null)
             {

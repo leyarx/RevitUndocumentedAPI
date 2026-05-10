@@ -10,8 +10,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Commands\BackgroundProcessesCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SplitRegionOffsetCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\CalculationsPanelHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\CalculationsPanelWrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Controls\InputDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\HelloWorldCalculationsPanelItem.cs" />
+    <Compile Include="..\RevitUndocumentedAPI\Common\ViewportSelectionFilter.cs" />
   </ItemGroup>
 </Project>
