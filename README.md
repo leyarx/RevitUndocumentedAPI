@@ -34,6 +34,5 @@ Add Item to Background Processes Panel
 
 ## SplitRegionOffsetCommand
 Move Splitted Crop Region
-Works only in Revit 2025 & 2026
 
 ![Revit Split Region Offset](./Images/SplitRegionOffsetCommand.gif?raw=true)

@@ -45,7 +45,12 @@ namespace RevitUndocumentedAPI.Commands
                                 var ptr = GetCropRegionShapeManagerPtr(shapeManager);
 
                                 var regionIndex = 0;
-                                MoveRegionAlongBasis(ptr, regionIndex, value.Value);
+                                using (Transaction tx = new Transaction(doc, "Move Split Region"))
+                                {
+                                    tx.Start();
+                                    MoveRegionAlongBasis(ptr, regionIndex, value.Value);
+                                    tx.Commit();
+                                }
                                 uidoc.RefreshActiveView();
                             }
                         }
@@ -94,7 +99,7 @@ namespace RevitUndocumentedAPI.Commands
         private static extern bool Viewer_isNonRectangularCropAreaPresent(IntPtr thisPtr);
 #endif
 
-        [DllImport("RevitDB.dll", //C:\\Program Files\\Autodesk\\Revit 2025\\
+        [DllImport("RevitDB.dll",
             EntryPoint = "?moveViewRegionOffset@Viewer@@QEAAXHQEBNAEAVViewLayout@@@Z",
             CallingConvention = CallingConvention.Cdecl)]
         private static extern unsafe void Viewer_moveViewRegionOffset(
@@ -102,6 +107,21 @@ namespace RevitUndocumentedAPI.Commands
             int regionIndex,
             double* moveVector, // const double* (3 doubles)
             IntPtr viewLayout); // ViewLayout&
+
+        [DllImport("RevitDB.dll",
+            EntryPoint = "?getBoundedSpace@Viewer@@QEBAAEBVBoundedSpace@@XZ",
+            CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr Viewer_getBoundedSpace(IntPtr viewerPtr);
+
+        [DllImport("RevitDB.dll",
+            EntryPoint = "?getViewLayout@Viewer@@QEBAAEBVViewLayout@@XZ",
+            CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr Viewer_getViewLayout(IntPtr viewerPtr);
+
+        [DllImport("RevitDB.dll",
+            EntryPoint = "?getViewLayoutForWrite@Viewer@@QEAAAEAVViewLayout@@XZ",
+            CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr Viewer_getViewLayoutForWrite(IntPtr viewerPtr);
 
         private static IntPtr GetViewer(IntPtr cropManagerPtr)
         {
@@ -120,36 +140,6 @@ namespace RevitUndocumentedAPI.Commands
             return valid - 8;
         }
 
-        private unsafe static IntPtr GetLayoutPtr(IntPtr cropManagerPtr, IntPtr viewer)
-        {
-            var sketch = IntPtr.Zero;
-            bool isNonRect = Viewer_isNonRectangularCropAreaPresent(viewer
-#if REVIT2022
-                , &sketch
-#endif     
-                );
-
-            if (isNonRect)
-            {
-                // static global Owner<ViewLayout> — read inner ptr
-                IntPtr sym = GetProcAddress(
-                    GetModuleHandle("RevitDB.dll"),
-                    "?s_defaultViewLayout@Viewer@@0V?$Owner@$$CBVViewLayout@@@@A");
-                return Marshal.ReadIntPtr(sym);
-            }
-            else
-            {
-                // instance layout at Viewer+0x1E8
-                return Marshal.ReadIntPtr(viewer +
-#if REVIT2022
-                    0x1B0
-#elif REVIT2025 || REVIT2026
-                    0x1E8
-#endif
-                    );
-            }
-        }
-
         public unsafe static void MoveRegionAlongBasis(
             IntPtr cropManagerPtr,
             int regionIndex,
@@ -158,16 +148,22 @@ namespace RevitUndocumentedAPI.Commands
             IntPtr viewer = GetViewer(cropManagerPtr);
             if (viewer == IntPtr.Zero) return;
 
-            IntPtr layout = GetLayoutPtr(cropManagerPtr, viewer);
+            IntPtr layout = Viewer_getViewLayoutForWrite(viewer);
             if (layout == IntPtr.Zero) return;
 
             // read basisIndex from layout+8
             int basisIndex = Marshal.ReadInt32(layout + 8);
 
+            IntPtr boundedSpace = Viewer_getBoundedSpace(viewer);
+
+            // each XYZ = 3 doubles = 24 bytes
+            IntPtr basisPtr = boundedSpace + (basisIndex + 1) * 3 * 8;
+            XYZUtils_XYZ* basis = (XYZUtils_XYZ*)basisPtr;
+
             // build move vector along that axis only
-            double dx = basisIndex == 0 ? scalar : 0.0;
-            double dy = basisIndex == 1 ? scalar : 0.0;
-            double dz = basisIndex == 2 ? scalar : 0.0;
+            double dx = basis->X * scalar;
+            double dy = basis->Y * scalar;
+            double dz = basis->Z * scalar;
 
             double* vec = stackalloc double[3];
             vec[0] = dx;
@@ -188,6 +184,14 @@ namespace RevitUndocumentedAPI.Commands
             var shapeManagerProxyMpOwnedObject = shapeManagerProxyMpOwnedObjectField.GetValue(shapeManagerMProxy);
 
             return (IntPtr)Pointer.Unbox(shapeManagerProxyMpOwnedObject);
+        }
+
+        [StructLayout(LayoutKind.Sequential, Size = 24)]
+        public struct XYZUtils_XYZ
+        {
+            public double X;
+            public double Y;
+            public double Z;
         }
     }
 }
