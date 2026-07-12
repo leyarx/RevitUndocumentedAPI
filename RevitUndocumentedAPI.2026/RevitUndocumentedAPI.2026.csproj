@@ -13,8 +13,27 @@
   <Import Project="..\RevitUndocumentedAPI\RevitUndocumentedAPI.projitems" Label="Shared" />
 
   <ItemGroup>
+    <PackageReference Include="Adobe.PDF.Library.LM.NET" Version="18.41.0" IncludeAssets="compile;runtime;native" />
     <PackageReference Include="Nice3point.Revit.Api.UIFrameworkServices" Version="2026.4.0" />
-    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2026.0.0" />
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2026.0.0" IncludeAssets="compile" />
   </ItemGroup>
 
+	<Target Name="RemoveUnwantedRuntimeAssets" AfterTargets="Build">
+		<RemoveDir Directories="$(TargetDir)runtimes\linux-x64" />
+		<RemoveDir Directories="$(TargetDir)runtimes\linux-arm64" />
+		<RemoveDir Directories="$(TargetDir)runtimes\win-arm64" />
+		<RemoveDir Directories="$(TargetDir)runtimes\osx-arm64" />
+		<RemoveDir Directories="$(TargetDir)runtimes\osx-x64" />
+		<RemoveDir Directories="$(TargetDir)runtimes\win-x64\native\tessdata4" />
+
+		<ItemGroup>
+			<FilesToDelete Include="$(TargetDir)runtimes\win-x64\native\*" Exclude="$(TargetDir)runtimes\win-x64\native\DL180PDFLPINVOKE.dll" />
+		</ItemGroup>
+		<Delete Files="@(FilesToDelete)" />
+	</Target>
+
+	<Target Name="DeleteRuntimesFolderOnClean" AfterTargets="Clean">
+		<RemoveDir Directories="$(TargetDir)runtimes" />
+	</Target>
+	
 </Project>

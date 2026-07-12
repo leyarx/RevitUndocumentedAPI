@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Commands\BackgroundProcessesCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\PdfWatermarkCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SplitRegionOffsetCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\CalculationsPanelHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\CalculationsPanelWrapper.cs" />

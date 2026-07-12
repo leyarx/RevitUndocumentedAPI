@@ -1,4 +1,4 @@
-# RevitUndocumentedAPI
+﻿# RevitUndocumentedAPI
 
 Some useful Revit API function which is not documented. Use at your own risk.
 
@@ -36,3 +36,22 @@ Add Item to Background Processes Panel
 Move Splitted Crop Region
 
 ![Revit Split Region Offset](./Images/SplitRegionOffsetCommand.gif?raw=true)
+
+## PdfWatermarkCommand
+Add Watermark to PDF
+
+![Revit PDF Watermark](./Images/PdfWatermarkCommand.png?raw=true)
+#### Adobe.PDF.Library.LM.NET
+```
+Compatibility notes:
+
+- Versions **18.42.0 through 18.53.0** are **not compatible** due to DLL dependency issues.
+- Revit’s root folder contains an older `dbghelp.dll` that shadows the correct version in `System32`.
+
+Known working versions:
+
+- **Revit 2025** → **18.23.0**
+- **Revit 2026** → **18.41.0**
+
+Note: **18.49.0** is a right version for Revit 2026, but it cannot be used because of the DLL dependency conflict.
+``` a right version for Revit 2026, but it cannot be used because of the DLL dependency conflict.

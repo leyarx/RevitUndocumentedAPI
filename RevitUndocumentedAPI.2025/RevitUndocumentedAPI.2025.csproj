@@ -8,13 +8,33 @@
     <Nullable>enable</Nullable>
 	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	<DefineConstants>REVIT2025</DefineConstants>
+	<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Adobe.PDF.Library.LM.NET" Version="18.23.0" IncludeAssets="compile;runtime;native" />
     <PackageReference Include="Nice3point.Revit.Api.UIFrameworkServices" Version="2025.4.20" />
-    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2025.0.0" />
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2025.0.0" IncludeAssets="compile" />
   </ItemGroup>
 
   <Import Project="..\RevitUndocumentedAPI\RevitUndocumentedAPI.projitems" Label="Shared" />
 
+	<Target Name="RemoveUnwantedRuntimeAssets" AfterTargets="Build">
+		<RemoveDir Directories="$(TargetDir)runtimes\linux-x64" />
+		<RemoveDir Directories="$(TargetDir)runtimes\osx-arm64" />
+		<RemoveDir Directories="$(TargetDir)runtimes\win-x64\native\tessdata4" />
+
+		<ItemGroup>
+			<FilesToDelete Include="$(TargetDir)runtimes\win-x64\native\*"
+							Exclude="$(TargetDir)runtimes\win-x64\native\DL180PDFLPINVOKE.dll" />
+		</ItemGroup>
+		<Delete Files="@(FilesToDelete)" />
+	</Target>
+
+	<Target Name="DeleteRuntimesFolderOnClean" AfterTargets="Clean">
+		<RemoveDir Directories="$(TargetDir)runtimes" />
+	</Target>
+	
 </Project>
